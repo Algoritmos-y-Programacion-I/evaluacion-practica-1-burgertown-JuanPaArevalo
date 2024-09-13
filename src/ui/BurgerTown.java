@@ -100,32 +100,96 @@ public class BurgerTown {
 
     }
 
+    /**
+     * Descripcion: Solicita los datos sobre el numero de platos vendidos en el día, es decir, el precio y la cantidad total
+     */
     public static void solicitarDatos(){
+        int i = 0;
+        int j=0;
+        while (i<precios.length){
+            System.out.println("Por favor, ingrese el precio del plato: " + (j + 1));
+            double precioProduct = reader.nextDouble();
+            precios [i] = precioProduct;
 
+            System.out.println("Por favor, ingrese la cantidad total vendida del plato");
+            int cantVendi = reader.nextInt();
+            unidades[i] = cantVendi;
+
+            j++;
+
+            i++;
+        }
      
     }
 
+    /**
+     * Descripción: Con lo datos anteriormente ingresados y almacenados, realiza el calculo de la cantidad total de platos vendidos en el día
+     * @return int, totalPlatosVendi, regresa el resultado de dicho calculo 
+     */
     public static int calcularTotalPlatosVendidos(){
 
-        return 0;
+        int i = 0;
+        int totalPlatosVendi = 0;
+
+        while (i<unidades.length){
+            totalPlatosVendi = totalPlatosVendi + unidades[i];
+
+            i++;
+
+        }
+        return totalPlatosVendi;
 
     }
 
     public static double calcularPrecioPromedio(){
+        int i = 0;
+        double sumPrecios = 0;
+        int platos = 3;
 
-        return 0;
+        while(i<precios.length){
+            sumPrecios += precios[i];
+
+            i++;
+        }
+
+        double presupuesto = sumPrecios / (precios.length); 
+
+        return presupuesto;
 
     }
 
     public static double calcularVentasTotales(){
 
-        return 0;
+        double totalVendidos = 0;
+
+        for (int i=0 ; i<precios.length; i++){
+            totalVendidos = totalVendidos + (precios[i] * unidades[i]);
+
+        }
+
+        return totalVendidos;
 
     }
 
     public static int consultarPlatosSobreLimite(double limite){
+        //int = 0;
+        double ventasPlatos = 0;
+        int platosMax = 0;
 
-        return 0;
+        for (int i=0 ; i<precios.length ; i++){
+
+            ventasPlatos += (precios [i] * unidades[i]); 
+        }
+
+        if (ventasPlatos >= limite){
+            platosMax++;
+
+        }
+
+
+        
+
+        return platosMax;
 
     }
 
